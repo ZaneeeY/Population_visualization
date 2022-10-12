@@ -1,0 +1,132 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 430,
+    "height": 430,
+    "title": "Population VS Area by country in 2020",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ZaneeeY/Homework_W10/main/data/world_population.csv"
+    },
+    "params": 
+    [
+      {
+        "name": "Continent_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "labels":[
+            "Show All",
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "name": "Continent: "
+        }
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "Area",
+        "type": "quantitative",
+        "title": "Area(km)",
+        "axis": {"tickCount": 9},
+        "scale": {"type": "log", "domain": [0.1, 100000000]}
+        },
+      "y": {
+        
+        "field": "Population2020",
+        "title": "Population",
+        "type": "quantitative",
+        "axis": {"tickCount": 8},
+        "scale": {"type": "log", "domain": [100, 10000000000]}
+      }
+    },
+    "layer": [ {
+      "transform": [
+        {"filter": "datum.Area > 0"},
+        {"filter": "datum.Population2020 > 0"},
+        {
+          "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+        },
+        {
+          "calculate": "datum.Population2020/datum.Area",
+          "as": "Population per square kilometer by country in 2020"
+        }
+      ],
+        "mark": "point",
+        "encoding": {
+          "color": {
+            "field": "Continent",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "North America",
+                "South America",
+                "Europe",
+                "Africa",
+                "Asia",
+                "Oceania"
+              ], 
+              "range": [
+                "#9467bd", 
+                "#a7a7a7",
+                "#aec7e8", 
+                "#1f77b4", 
+                "#e7ba52",
+                "#a65628"
+              ]
+            }
+          },
+          "opacity": { "value": 0.8},
+          "tooltip": [
+            {"field": "Rank", "type": "nominal", "title": "Rank of total Population"},
+            {"field": "Country", "type": "nominal", "title": "Country"},
+            {"field": "Capital", "type": "nominal", "title": "Capital"},
+            {"field": "Population2020", "type": "quantitative", "title": "Population", "format": ","},
+            {"field": "Population per square kilometer by country in 2020", "title": "Population per square km²", "type": "quantitative", "format": ".2f"}
+          ]
+        } 
+      },
+      {
+        "transform": [
+          {"filter": "datum.Area > 0"},
+          {"filter": "datum.Rank == 1"},
+          {"filter": "datum.Population2020 > 0"},
+          {
+            "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+          },
+          {
+            "calculate": "'The country with the largest population is '+ datum.Country +',; with '+datum.Population2020 +' people.'",
+            "as": "text_annotation_raw"
+          },
+          {
+            "calculate": "split(datum.text_annotation_raw, ';')",
+            "as": "text_annotation"
+          }
+        ],
+        "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": 70,
+        "dy": -30,
+        "fontSize": 12,
+        "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"field": "text_annotation", "type": "nominal"},
+          "color": {"value": "black"}
+        }
+      }
+    ] 
+  }
