@@ -23,71 +23,47 @@
 }
 
 /* Selectors in HTML */
+body *{
+    font-family: 'Open Sans', sans-serif;
+}
 
 h1 {
-    font-family: 'Fondamento';
-	text-align:center;
+    font-weight: 900;
 }
 
-p {
-    font-family: 'Roboto';
+body {
+    background-color: lightgray;
 }
 
-#idselect {
-    color: green;
+.page {
+    width: 850px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
 }
 
-.class-select {
-    color: blue;
+.vis-container {
+    width: 100%;
 }
 
-
-/* Fonts in HTML */
-
-#head1 {
-    font-family: 'Abril Fatface', cursive;
+.description h2,
+h1 {
+    margin-top: 0px;
 }
 
-#para1 {
-    font-family: 'Lobster', cursive;
+.description-right {
+    padding-left: 20px;
 }
 
-
-/* Background in HTML */
-
-.bg-h1 {
-    background-color: #2D4B65;
-    color: white;
+.description-left {
+    padding-right: 20px;
 }
 
-.bg-para {
-    background-color: #B0C6CF;
+.pure-g {
+    margin-bottom: 40px;
 }
 
-#section2 {
-	width: 150px;
-	height: 150px;
-	top: 100px;
-	background-color: #2D4B65;
-    color: white;
-}
-
-/* Text Alignment in HTML */
-
-#l-align {
-    text-align: left;
-    border: 1px solid black;
-    /* to set the border*/
-}
-
-#c-align {
-    text-align: center;
-    border: 1px solid black;
-    /* to set the border*/
-}
-
-#r-align {
-    text-align: right;
-    border: 1px solid black;
-    /* to set the border*/
+.small-font {
+    font-size: 14px;
 }

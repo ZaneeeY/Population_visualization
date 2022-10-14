@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "World Population Distribution from 2000 to 2020",
-    "width": 800,
+    "width": 700,
     "height": 400,
     "projection": {"type": "equalEarth"},
     "data": {
@@ -86,7 +86,7 @@
               { "test": "year_selection == '2000'", "field": "Population per square kilometer by country in 2000" }
             ],
             "field": "Population per square kilometer by country in 2020",
-            "title": "Population per square kilometer",
+            "title": "Population per km²",
             "type": "quantitative",
             "scale": {
               "type": "threshold",
