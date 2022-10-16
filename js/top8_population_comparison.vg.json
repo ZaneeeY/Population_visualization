@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/ZaneeeY/Population_visualization/main/data/world_population.csv"},
+  "width": 320,
+  "height": 200,
+  "transform": [
+    {"filter": "datum.Growth_rate>0"}
+  ],
+  "encoding": {"x": {"field": "Year", "type": "temporal"}},
+  "layer": [
+    {
+      "transform": [
+         {"filter": "datum.Rank < 9 "},
+         {"filter": "datum.Growth_rate>0"}
+      ],
+      "encoding": {
+        "color": {
+          "field": "Country" ,
+          "type": "nominal",
+          "legend": {"orient": "bottom", "columns": 4, "labelExpr": "datum.label == 'United States of America' ? 'USA' : datum.label"},
+          "scale": {
+            "domain": [
+              "Bangladesh",
+              "Brazil",
+              "China",
+              "India",
+              "Indonesia",
+              "Nigeria",
+              "Pakistan",
+              "United States of America"
+            ], 
+            "range": [
+              "#e41a1c", 
+              "#377eb8",
+              "#4daf4a", 
+              "#984ea3", 
+              "#ff7f00",
+              "#ffff33",
+              "#a65628",
+              "#f781bf"
+            ]
+          }
+        },
+        "y": {"field": "Growth_rate", "type": "quantitative",
+      "axis": {"title": "Population Growth Rate", "format": ".2%"}
+    }
+      },
+      "layer": [
+        {"mark": "line"},
+        {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}
+      ]
+    },
+    {
+      "transform": [
+        {"pivot": "Country", "value": "Growth_rate", "groupby": ["Year"]}
+      ],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Bangladesh", "format": ".2%", "type": "quantitative"},
+          {"field": "Brazil", "format": ".2%", "type": "quantitative"},
+          {"field": "China", "format": ".2%", "type": "quantitative"},
+          {"field": "India", "format": ".2%", "type": "quantitative"},
+          {"field": "Indonesia", "format": ".2%", "type": "quantitative"},
+          {"field": "Nigeria", "format": ".2%", "type": "quantitative"},
+          {"field": "Pakistan", "format": ".2%", "type": "quantitative"},
+          {"field": "United States of America", "title":"USA", "format": ".2%", "type": "quantitative"}
+        ]
+      },
+      "params": [{
+        "name": "hover",
+        "select": {
+          "type": "point",
+          "fields": ["Year"],
+          "nearest": true,
+          "on": "mouseover",
+          "clear": "mouseout"
+        }
+      }]
+    }
+  ],
+  "config": {
+    "legend": {"layout": {"bottom": {"anchor": "middle"}}}
+  }
+}

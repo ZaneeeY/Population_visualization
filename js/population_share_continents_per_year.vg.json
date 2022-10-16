@@ -1,0 +1,119 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": 
+  [
+    {
+      "name": "year_selection",
+      "value": 2020,
+      "bind": {
+        "input": "select",
+        "options": [
+          "2020",
+          "2010",
+          "2000",
+          "1990",
+          "1980",
+          "1970"
+        ],
+        "labels": [
+          "2020",
+          "2010",
+          "2000",
+          "1990",
+          "1980",
+          "1970"
+        ],
+        "name": "Focused Year: "
+      }
+    }
+  ],
+  "hconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ZaneeeY/Population_visualization/main/data/world_population.csv"
+      },
+      "params": [{
+        "name": "click",
+        "select": {"type": "point", "encodings": ["color"]}
+      }],
+        "transform": [
+        {"filter": "datum.Year == year_selection"}
+      ],
+      "mark": {"type": "arc", "innerRadius": 0, "padAngle": 0.025, "cornerRadius": 6.5},
+      "title": "Percentage of population distribution by continent",
+      "width": 370,
+      "height": 370,
+      "encoding": {
+        "theta": {"field": "Population", "aggregate": "sum", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "param": "click",
+            "field": "Continent",
+            "scale": {
+              "domain": [
+                "North America",
+                "South America",
+                "Europe",
+                "Africa",
+                "Asia",
+                "Oceania"
+              ],
+              "range": [
+                "#a6cee3", 
+                "#1f78b4",
+                "#b2df8a", 
+                "#33a02c", 
+                "#fb9a99",
+                "#e31a1c"]
+            }
+          },
+          "value": "lightgray",
+          "type": "nominal",
+          "legend": {"orient": "bottom", "columns": 3, "titleAlign":"center"}
+        },
+        "order": {"field": "Population", "type": "quantitative", "aggregate": "sum", "sort": "descending"},
+        "tooltip": [
+          {
+            "field": "Continent"
+          },
+          {
+            "field": "Year"
+          },
+          {"field": "Population", "aggregate": "sum", "type": "quantitative", "title": "Population", "format": ","}
+        ]
+      },
+      "params": [{
+        "name": "click",
+        "select": {"type": "point", "encodings": ["color"]}
+      }]
+    },
+    {
+      "data": {"url": "https://raw.githubusercontent.com/ZaneeeY/Population_visualization/main/data/world_population.csv"},
+      "mark": {
+        "type": "line",
+        "point": true
+      },
+      "transform": [{"filter": {"param": "click"}}],
+      "title": "Percentage of population distribution by continent",
+      "width": 335,
+      "height": 335,
+      "encoding": {
+      "x": {"field": "Year", "type": "nominal"},
+      "y": {"aggregate":"sum", "field": "Population", "title":"Population", "type": "quantitative"},
+      "color": {
+        "field": "Continent", 
+        "type": "nominal",
+        "legend": {"orient": "bottom", "columns": 3, "titleAlign":"center"}},
+      "tooltip": [
+          {
+            "field": "Continent"
+          },
+          {
+            "field": "Year"
+          },
+          {"field": "Population", "aggregate": "sum", "type": "quantitative", "title": "Population", "format": ","}
+        ]
+      }
+    }
+  ]
+}

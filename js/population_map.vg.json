@@ -98,7 +98,7 @@
           },
           {"field": "Population", "type": "quantitative", "title": "Population", "format": ","},
           {"field": "Area", "type": "quantitative", "title": "Area (km²)", "format": ","},
-          {"field": "Population per square kilometer", "type": "quantitative", "title": "Population in 2020 per square km²", "format": ".2f"}
+          {"field": "Population per square kilometer", "type": "quantitative", "title": "Population per square km²", "format": ".2f"}
         ]
       }
     }
