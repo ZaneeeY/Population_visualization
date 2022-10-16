@@ -28,9 +28,14 @@
     <div class="pure-g">
       <div class="pure-u-1-1">
         <h1>World Population Report from 1970 to 2020</h1>
-        <p>This World Population Report presents population data for each decade
-          from 1970 to 2020 and is intended to help provide more visual information for those interested in population change.
-          <br><br>The data comes from Kaggle's "World Population Dataset"(https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset), which is recognized as gold and therefore has a high degree of credibility.</p>
+        <p>Since 1970, with economic development, people's material needs have been well supplied and the population around the world has been increasing.
+          </p>
+        <p>
+          This World Population Report uses data on the population for each decade from 1970 to 2020 to show visually a map of the world's population 
+           distribution, the proportions and changes in the population ratios of different continents from 1970 to 2020, the changes in the population growth rates
+            of the top 8 countries in terms of total population, and the two factors affecting the population compared to the population. This report aims to
+             provide more visual information for those interested in population change.
+          
       </div>
     </div>
     <!-- end pure grid group -->
@@ -38,45 +43,85 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h2>First and Second Columns Combined</h2>
-        <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-          faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+        <h2>Distribution</h2>
       </div>
       <div class="pure-u-1-1">
         <div id="population_map" class="vis-container"></div>
       </div>
+      <div class="pure-u-1-2">
+        <p>The map mainly shows the number of people per square kilometer 
+          in each country in the world. The color value is a channel, the 
+          darker the color, the more people per square kilometer in that country.</p>
+        <p>In the 1970s, the United Kingdom, Germany, Italy, Poland and Netherland in Europe, and Japan,
+           Korea, India and Bangladesh in Asia were more densely populated.</p>
+        <p>By the year 2000, the populations of France, Italy</p>
+      </div>
+
+      <div class="pure-u-1-2">
+        <p> and other countries in Europe, China, Thailand and Vietnam in Asia, 
+          Nigeria in Africa and Cuba and Mexico in South America were also gradually 
+          increasing to over 100 people per square kilometer. Specially, population 
+          per square kilometer in India reached 322.31.</p>
+        <p>Finally, Indonesia, the Philippines and Nepal in Asia, Uganda, Ethiopia, 
+          and Egypt in Africa, and Austria in Europe also have more than one hundred people
+           per square kilometer in 2020.</p>
+      </div>
+
+      <div class="pure-u-1-1">
+        <p>But what about the overall population share and growth trends across continents?</p>
+      </div>
+
     </div>
     <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h2>First and Second Columns Combined</h2>
+        <h2>Continents</h2>
       </div>
       <div class="pure-u-1-1">
         <div id="population_share_continents_per_year" class="vis-container"></div>
       </div>
-      <div class="pure-u-1-1">
-        
-        <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-          faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+      <div class="pure-u-1-2">
+        <p>The pie chart shows the population distribution of different continents, select a year 
+          in Focused Year selector to display the data of a specific year, click on the sector in the 
+          pie chart, and the line graph on the right indicating population growth trend of each continent
+           will show the data of a specific continent.</p>
+        <p>Because it is the largest, Asia has always accounted for more than half of the world's population,
+          and its</p>
+      </div>
+      <div class="pure-u-1-2">
+        <p> share rose from the 1970s to the beginning of the 20th century, before declining. Europe was
+           the second most populous continent in 1970, but its share continued to decline and was surpassed in 
+           2000 by Africa, which continued to grow in population. The populations of both South and North America 
+           are slowly growing, and Oceania's population growth trend is fast, but its population base is so 
+           small that it always is the smallest part of the total population.</p>
       </div>
 
+      <div class="pure-u-1-1">
+        <p>
+          Next, let's look at the growth rates of the top 8 countries in terms of population.
+        </p>
+      </div>
+      
     </div>
     <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h2>First and Second Columns Combined</h2>
+        <h2>Growth Rate</h2>
       </div>
       <div class="pure-u-1-2">
         <div class="description description-left">
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat
-            sed. Egestas purus viverra accumsan in nisl. Egestas purus viverra accumsan in nisl.</p>
+          <p>The line graph on the right shows the change in growth rate* for the top 10 countries. Please hover your mouse 
+            over the chart to see the growth rates of the 8 countries for the current year.</p>
+          
+          <p>Among the Top 8 countries, both Nigeria and USA maintain population growth rates of around 30% and 10% respectively,
+            and all other countries are gradually or rapidly declining to below 20%.</p>
+          
+            <br><br>
+          <p>*Growth Rate = (Past Population - Current Population)/Past Population</p>
         </div>
       </div>
       <div class="pure-u-1-2">
@@ -95,9 +140,8 @@
       </div>
       <div class="pure-u-1-2">
         <div class="description description-left">
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat
-            sed. Egestas purus viverra accumsan in nisl. Egestas purus viverra accumsan in nisl.</p>
+          <p>The line graph on the right shows the change in growth rate ((past population - current population)/past
+             population) for the top 10 countries.</p>
         </div>
       </div>
     </div>
@@ -105,7 +149,8 @@
     
     <div class="pure-g">
       <div class="pure-u-1" id="c-align">
-        <p> Visualisation by <strong>Zheng Yu</strong> - Datasets provided by <strong>Kaggle</strong> (https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset).</p>
+        <p> Visualisation by <strong>Zheng Yu</strong> - Datasets provided by <strong>Kaggle</strong> (https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset).
+          The data comes from Kaggle's "World Population Dataset"(https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset), which is recognized as gold and therefore has a high degree of credibility.</p></p>
       </div>
     </div>
   </div>

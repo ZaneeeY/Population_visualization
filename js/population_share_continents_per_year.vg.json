@@ -40,9 +40,9 @@
         {"filter": "datum.Year == year_selection"}
       ],
       "mark": {"type": "arc", "innerRadius": 0, "padAngle": 0.025, "cornerRadius": 6.5},
-      "title": "Percentage of population distribution by continent",
-      "width": 370,
-      "height": 370,
+      "title": "Percentage of Population Distribution by Continent",
+      "width": 360,
+      "height": 360,
       "encoding": {
         "theta": {"field": "Population", "aggregate": "sum", "type": "quantitative"},
         "color": {
@@ -94,9 +94,9 @@
         "point": true
       },
       "transform": [{"filter": {"param": "click"}}],
-      "title": "Percentage of population distribution by continent",
-      "width": 335,
-      "height": 335,
+      "title": "Population Growth Trend by Continent",
+      "width": 325,
+      "height": 325,
       "encoding": {
       "x": {"field": "Year", "type": "nominal"},
       "y": {"aggregate":"sum", "field": "Population", "title":"Population", "type": "quantitative"},

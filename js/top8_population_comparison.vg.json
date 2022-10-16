@@ -3,6 +3,7 @@
   "data": {"url": "https://raw.githubusercontent.com/ZaneeeY/Population_visualization/main/data/world_population.csv"},
   "width": 320,
   "height": 200,
+  "title": "Growth Rates of the Top 8 Countries",
   "transform": [
     {"filter": "datum.Growth_rate>0"}
   ],
