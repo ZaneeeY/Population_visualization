@@ -100,3 +100,74 @@ h1 {
     color: #5A547C;
     font-weight: bold;
 }
+
+.Asia{
+    color: #fb9a99;
+    font-weight: bold;
+}
+
+.NorthAmerica{
+    color: #a6cee3;
+    font-weight: bold;
+}
+
+.SouthAmerica{
+    color: #1f78b4;
+    font-weight: bold;
+}
+
+.Europe{
+    color: #b2df8a;
+    font-weight: bold;
+}
+
+.Africa{
+    color: #33a02c;
+    font-weight: bold;
+}
+
+.Oceania{
+    color: #e31a1c;
+    font-weight: bold;
+}
+
+.Bangladesh{
+    color: #e41a1c;
+    font-weight: bold;
+}
+
+.Brazil{
+    color: #377eb8;
+    font-weight: bold;
+}
+
+.China{
+    color: #4daf4a;
+    font-weight: bold;
+}
+
+.India{
+    color: #984ea3;
+    font-weight: bold;
+}
+
+
+.Indonesia{
+    color: #ffff33;
+    font-weight: bold;
+}
+
+.Nigeria{
+    color: #ff7f00;
+    font-weight: bold;
+}
+
+.Pakistan{
+    color: #a65628;
+    font-weight: bold;
+}
+
+.USA{
+    color: #f781bf;
+    font-weight: bold;
+}
