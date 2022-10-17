@@ -48,7 +48,11 @@ body {
 }
 
 p{
-    text-align:left;
+    text-align: left;
+}
+
+p strong{
+    font-weight: bold;
 }
 
 .page {
@@ -85,4 +89,14 @@ h1 {
 
 .small-font {
     font-size: 14px;
+    color: grey;
+}
+
+.center{
+    text-align: center;
+}
+
+.s1_hightlight{
+    color: #5A547C;
+    font-weight: bold;
 }

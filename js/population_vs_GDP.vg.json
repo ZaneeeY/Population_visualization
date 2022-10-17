@@ -1,0 +1,263 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ZaneeeY/Population_visualization/main/data/world_population.csv"
+  },
+  "title": "Population VS GDP",
+  "params": 
+  [
+    {
+      "name": "year_selection",
+      "value": 2000,
+      "bind": {
+        "input": "select",
+        "options": [
+          "2020",
+          "2010",
+          "2000",
+          "1990",
+          "1980",
+          "1970"
+        ],
+        "labels": [
+          "2020",
+          "2010",
+          "2000",
+          "1990",
+          "1980",
+          "1970"
+        ],
+        "name": "Focused Year: "
+      }
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels":[
+          "All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Focused Continent: "
+      }
+    }
+  ],
+  "width": 700,
+  "height": 220,
+  "encoding": {
+    "x": {
+      "field": "GDP",
+      "type": "quantitative",
+      "title": "GDP(USD)",
+      "axis": {"tickCount": 9},
+      "scale": {"type": "log", "domain": [8000000, 30000000000000]}
+      },
+    "y": {
+      
+      "field": "Population",
+      "title": "Population",
+      "type": "quantitative",
+      "axis": {"tickCount": 8},
+      "scale": {"type": "log", "domain": [100, 10000000000]}
+    }
+  },
+  "layer": [
+  {
+  "transform": [
+    {"filter": "datum.Rank == 1"},
+    {"filter": "datum.Year == year_selection"},
+    {
+    "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    },
+    {
+      "calculate": "'The total population of ' + datum.Country+ '; is the highest in the world, and; its GPD is $'+ format(datum.GDP,'.2e') + ' in '+ datum.Year",
+      "as": "text_annotation_raw"
+    },
+    {
+      "calculate": "split(datum.text_annotation_raw, ';')",
+      "as": "text_annotation"
+    }
+  ],
+  "mark": {
+    "type": "text",
+    "align": "right",
+    "baseline": "middle",
+    "dx": 25,
+    "dy": -20,
+    "fontSize": 8,
+    "fontStyle": "italic"
+  },
+  "encoding": {
+    "text": {"field": "text_annotation", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": { "value": 0.8}
+  }
+  },
+  {
+    "transform": [
+      {"filter": "datum.GDP > 0"},
+      {"filter": "datum.Country == 'Tuvalu'"},
+      {"filter": "datum.Year == year_selection"},
+      {
+        "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+      },
+      {
+        "calculate": "'Only '+ format(datum.Population, ',') + ' people live in; '+datum.Country +', and its GDP is; $' + format(datum.GDP, ',') +' in ' + datum.Year",
+        "as": "text_annotation_raw"
+      },
+      {
+        "calculate": "split(datum.text_annotation_raw, ';')",
+        "as": "text_annotation"
+      }
+    ],
+    "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "middle",
+      "dx": 76,
+      "dy": 10,
+      "fontSize": 8,
+      "fontStyle": "italic"
+    },
+    "encoding": {
+      "text": {"field": "text_annotation", "type": "nominal"},
+      "color": {"value": "black"},
+      "opacity": { "value": 0.8}
+    }
+  },
+  {
+    "transform": [
+      {"filter": "datum.Country == 'United States of America'"},
+      {"filter": "datum.Year == year_selection"},
+      {
+        "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+      },
+      {
+        "calculate": " datum.Country +' had a; GDP of $'+ format(datum.GDP,'.2e') + ' in '+ datum.Year +' and ;its population was '+ format(datum.Population, ',') ",
+        "as": "text_annotation_raw"
+      },
+      {
+        "calculate": "split(datum.text_annotation_raw, ';')",
+        "as": "text_annotation"
+      }
+    ],
+    "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "middle",
+      "dx": 15,
+      "dy": 10,
+      "fontSize": 8,
+      "fontStyle": "italic"
+    },
+    "encoding": {
+      "text": {"field": "text_annotation", "type": "nominal"},
+      "color": {"value": "black"},
+      "opacity": { "value": 0.8}
+    }
+  },
+  {
+  "transform": [
+    {"filter": "datum.GDP > 0"},
+    {"filter": "datum.Population > 0"},
+    {"filter": "datum.Year == year_selection"},
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    },
+    {
+      "calculate": "datum.GDP/datum.Population",
+      "as": "GDP per capita"
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "color": {
+      "field": "Continent",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ], 
+        "range": [
+          "#a6cee3", 
+          "#1f78b4",
+          "#b2df8a", 
+          "#33a02c", 
+          "#fb9a99",
+          "#e31a1c"
+        ]
+      }
+    },
+      "opacity": { "value": 0.8},
+      "tooltip": [
+        {"field": "Rank", "type": "nominal", "title": "Rank of total Population"},
+        {"field": "Country", "type": "nominal", "title": "Country"},
+        {"field": "Capital", "type": "nominal", "title": "Capital"},
+        {
+          "field": "Year"
+        },
+        {"field": "Population", "type": "quantitative", "title": "Population", "format": ","},
+        {"field": "GDP", "type": "quantitative", "title": "GDP (USD)", "format": ","},
+        {"field": "GDP per capita", "type": "quantitative", "title": "GDP (USD) per capita", "format": ".2f"}
+      ]
+    } 
+  },
+  {
+  "transform": [
+    {"filter": "datum.GDP > 0"},
+    {"filter": "datum.Country == 'China' || datum.Country == 'Tuvalu' || datum.Country == 'United States of America'"},
+    {"filter": "datum.Year == year_selection"},
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    }
+  ],
+    "mark": "circle",
+    "encoding": {
+      "color": {
+        "field": "Continent",
+        "legend": {"orient": "bottom", "columns": 3},
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ], 
+          "range": [
+            "#a6cee3", 
+            "#1f78b4",
+            "#b2df8a", 
+            "#33a02c", 
+            "#fb9a99",
+            "#e31a1c"
+          ]
+        }
+      },
+      "opacity": { "value": 1}
+      
+    } 
+  }
+  ]
+}

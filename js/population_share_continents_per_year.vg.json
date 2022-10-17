@@ -4,7 +4,7 @@
   [
     {
       "name": "year_selection",
-      "value": 2020,
+      "value": 2000,
       "bind": {
         "input": "select",
         "options": [
