@@ -97,8 +97,8 @@
             "align": "right",
             "baseline": "middle",
             "dx": 50,
-            "dy": -15,
-            "fontSize": 7,
+            "dy": -8,
+            "fontSize": 10,
             "fontStyle": "italic"
           },
           "encoding": {
@@ -129,7 +129,7 @@
           "baseline": "middle",
           "dx": 55,
           "dy": -26,
-          "fontSize": 7,
+          "fontSize": 10,
           "fontStyle": "italic"
         },
         "encoding": {
@@ -160,7 +160,7 @@
           "baseline": "middle",
           "dx": 66,
           "dy": -7,
-          "fontSize": 7,
+          "fontSize": 10,
           "fontStyle": "italic"
         },
         "encoding": {
