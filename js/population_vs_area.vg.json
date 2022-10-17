@@ -75,7 +75,7 @@
           }
         },
         "layer": [ {
-          "width": 700,
+          "width":580,
           "height": 220,
           "transform": [
             {"filter": "datum.Country == 'Russia'"},
@@ -236,7 +236,6 @@
         "encoding": {
           "color": {
             "field": "Continent",
-            "legend": {"orient": "bottom", "columns": 3},
             "type": "nominal",
             "scale": {
               "domain": [

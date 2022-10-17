@@ -94,7 +94,7 @@
         "point": true
       },
       "transform": [{"filter": {"param": "click"}}],
-      "title": "Population Growth Trend by Continent",
+      "title": "Population of Continents in Different Years",
       "width": 325,
       "height": 325,
       "encoding": {
